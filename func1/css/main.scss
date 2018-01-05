@@ -1,0 +1,108 @@
+// Base
+@import 'base/fonts';
+@import 'base/normalize';
+@import 'base/body-element';
+@import 'base/selection-colors';
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, #fff, #000);
+    opacity: .2
+  }
+}
+
+.clock,
+.hex-color {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6em;
+  font-weight: 700;
+  text-shadow: 0 5px 15px rgba(0,0,0,.15);
+  letter-spacing: 0.05em;
+  cursor: default;
+  transition: opacity .4s ease-in-out;
+}
+
+.hex-color {
+  opacity: 0;
+}
+
+.clock {
+  z-index: 1;
+
+  &--is-hidden {
+    opacity: 0;
+
+    & + .hex-color {
+      opacity: 1;
+    }
+  }
+}
+
+.logo {
+  position: relative;
+  display: block;
+  width: 60px;
+  margin: 30px 0 0 45px
+}
+
+#secondHand,
+#bigHand {
+  transform-origin: center bottom;
+}
+
+#littleHand {
+  transform-origin: center top;
+}
+
+.st0,
+.st1,
+.st2 {
+  fill: none;
+  opacity: .9;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.st0 {
+  stroke-width: 12;
+}
+
+.st1 {
+  stroke-width: 2;
+}
+
+.st2 {
+  stroke-width: 4;
+}
+
+.st3 {
+  fill: #fff;
+  opacity: .9;
+}
+
+@media (max-width: 767px) {
+
+  .clock,
+  .hex-color {
+    font-size: 4.3em;
+  }
+
+  .logo {
+    margin: 30px auto auto auto
+  }
+}
